@@ -132,7 +132,7 @@ gaf.Asset = cc.Class.extend
     /**
      * Sets desired atlas scale. Will choose nearest atlas scale from available.
      * Default is 1.0f
-     * @param scale
+     * @param desiredAtlasScale
      */
     setDesiredAtlasScale : function(desiredAtlasScale){
         this._desiredAtlasScale = desiredAtlasScale;
@@ -158,7 +158,7 @@ gaf.Asset = cc.Class.extend
 
     /**
      * @method createObjectAndRun
-     * @param {boolean} arg0 - run looped
+     * @param {boolean} looped - run looped
      * @return {gaf.Object}
      */
     createObjectAndRun: function (looped)

@@ -3,7 +3,7 @@
     gaf.Sprite.WebGLRenderCmd = function (renderable) {
         cc.Sprite.WebGLRenderCmd.call(this, renderable);
         this._defualtShader = cc.shaderCache.programForKey(cc.SHADER_POSITION_TEXTURECOLOR);
-        if ("_Shaders" in gaf) this._customShader = gaf._Shaders.Alpha;
+        this._customShader = gaf._Shaders.Alpha;
 
         //this._shaderProgram = this._defualtShader;
 
@@ -138,6 +138,7 @@
 
         var node = this._node;
         var tex = node._batchNode ? node.textureAtlas.texture : node._texture;
+        var uvs = this._vertices;
         if (!tex)
         {
             return;
@@ -171,14 +172,25 @@
                     left -= right;
                 }
 
-                locQuad.bl.texCoords.u = right;
-                locQuad.bl.texCoords.v = bottom;
-                locQuad.br.texCoords.u = right;
-                locQuad.br.texCoords.v = top;
-                locQuad.tl.texCoords.u = left;
-                locQuad.tl.texCoords.v = bottom;
-                locQuad.tr.texCoords.u = left;
-                locQuad.tr.texCoords.v = top;
+                if (this._quad) {
+                    locQuad.bl.texCoords.u = right;
+                    locQuad.bl.texCoords.v = bottom;
+                    locQuad.br.texCoords.u = right;
+                    locQuad.br.texCoords.v = top;
+                    locQuad.tl.texCoords.u = left;
+                    locQuad.tl.texCoords.v = bottom;
+                    locQuad.tr.texCoords.u = left;
+                    locQuad.tr.texCoords.v = top;
+                } else {
+                    uvs[0].u = left;
+                    uvs[0].v = bottom;
+                    uvs[1].u = right;
+                    uvs[1].v = bottom;
+                    uvs[2].u = left;
+                    uvs[2].v = top;
+                    uvs[3].u = right;
+                    uvs[3].v = top;
+                }
             }
                 break;
 
@@ -198,14 +210,25 @@
                     left -= right;
                 }
 
-                locQuad.bl.texCoords.u = left;
-                locQuad.bl.texCoords.v = top;
-                locQuad.br.texCoords.u = left;
-                locQuad.br.texCoords.v = bottom;
-                locQuad.tl.texCoords.u = right;
-                locQuad.tl.texCoords.v = top;
-                locQuad.tr.texCoords.u = right;
-                locQuad.tr.texCoords.v = bottom;
+                if (this._quad) {
+                    locQuad.bl.texCoords.u = left;
+                    locQuad.bl.texCoords.v = top;
+                    locQuad.br.texCoords.u = left;
+                    locQuad.br.texCoords.v = bottom;
+                    locQuad.tl.texCoords.u = right;
+                    locQuad.tl.texCoords.v = top;
+                    locQuad.tr.texCoords.u = right;
+                    locQuad.tr.texCoords.v = bottom;
+                } else {
+                    uvs[0].u = right;
+                    uvs[0].v = top;
+                    uvs[1].u = left;
+                    uvs[1].v = top;
+                    uvs[2].u = right;
+                    uvs[2].v = bottom;
+                    uvs[3].u = left;
+                    uvs[3].v = bottom;
+                }
             }
                 break;
 
@@ -226,14 +249,25 @@
                     top -= bottom;
                 }
 
-                locQuad.bl.texCoords.u = left;
-                locQuad.bl.texCoords.v = bottom;
-                locQuad.br.texCoords.u = right;
-                locQuad.br.texCoords.v = bottom;
-                locQuad.tl.texCoords.u = left;
-                locQuad.tl.texCoords.v = top;
-                locQuad.tr.texCoords.u = right;
-                locQuad.tr.texCoords.v = top;
+                if (this._quad) {
+                    locQuad.bl.texCoords.u = left;
+                    locQuad.bl.texCoords.v = bottom;
+                    locQuad.br.texCoords.u = right;
+                    locQuad.br.texCoords.v = bottom;
+                    locQuad.tl.texCoords.u = left;
+                    locQuad.tl.texCoords.v = top;
+                    locQuad.tr.texCoords.u = right;
+                    locQuad.tr.texCoords.v = top;
+                } else {
+                    uvs[0].u = left;
+                    uvs[0].v = top;
+                    uvs[1].u = left;
+                    uvs[1].v = bottom;
+                    uvs[2].u = right;
+                    uvs[2].v = top;
+                    uvs[3].u = right;
+                    uvs[3].v = bottom;
+                }
             }
                 break;
         }

@@ -90,7 +90,7 @@ gaf._AssetPreload.prototype.AtlasCreateFrames = function(elements, asset, sprite
         };
 
         var frame;
-        if(cc._renderType === cc._RENDER_TYPE_WEBGL)
+        if(cc._renderType === cc.game.RENDER_TYPE_WEBGL)
         {
             frame = new cc.SpriteFrame(texture, rect);
         }

@@ -21,7 +21,7 @@ gaf._SpriteWrapper = cc.Sprite.extend
     setVertexRect: function(rect)
     {
         cc.Sprite.prototype.setVertexRect.call(this, rect);
-        if (cc._renderType == cc._RENDER_TYPE_WEBGL
+        if (cc._renderType == cc.game.RENDER_TYPE_WEBGL
             && this._rotation != gaf.ROTATED_NONE)
         {
             //swap;
@@ -43,7 +43,7 @@ gaf._SpriteWrapper = cc.Sprite.extend
         var rotatedSize = untrimmedSize;
         if (rotatedSize && this._rotation != gaf.ROTATED_NONE)
         {
-            if (cc._renderType == cc._RENDER_TYPE_WEBGL)
+            if (cc._renderType == cc.game.RENDER_TYPE_WEBGL)
             {
                 rotatedSize = new cc.size(rotatedSize.height, rotatedSize.width);
             }
@@ -86,7 +86,7 @@ gaf.Sprite = gaf.Object.extend
 
         this.addChild(this._sprite);
 
-        if(cc._renderType === cc._RENDER_TYPE_WEBGL)
+        if(cc._renderType === cc.game.RENDER_TYPE_WEBGL)
         {
             this._sprite.setBlendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
         }
@@ -175,7 +175,7 @@ gaf.Sprite = gaf.Object.extend
     },
 
     _gafCreateRenderCmd: function(item){
-        if(cc._renderType === cc._RENDER_TYPE_CANVAS)
+        if(cc._renderType === cc.game.RENDER_TYPE_CANVAS)
             return new gaf.Sprite.CanvasRenderCmd(item);
         else
             return new gaf.Sprite.WebGLRenderCmd(item);
