@@ -116,11 +116,11 @@
         if (this._colorized) {
             context.drawImage(image,
                 0, 0, locTextureCoord.width,locTextureCoord.height,
-                locX * scaleX,locY * scaleY, locWidth * scaleX, locHeight * scaleY);
+                locX,locY, locWidth, locHeight);
         } else {
             context.drawImage(image,
                 locTextureCoord.renderX, locTextureCoord.renderY, locTextureCoord.width, locTextureCoord.height,
-                locX * scaleX, locY * scaleY, locWidth * scaleX, locHeight * scaleY);
+                locX, locY, locWidth, locHeight);
         }
 
         if(node._flippedX || node._flippedY)
