@@ -590,7 +590,13 @@ gaf.TimeLine = gaf.Object.extend
             var parent = out;
             if(state.hasMask)
             {
-                parent = objects[state.maskObjectIdRef]._getNode();
+                ///////////////////////////////////////////////////
+                // FIX for older GAF (< 4.)
+                var maskIdRef = state.maskObjectIdRef;
+                if (maskIdRef.hasOwnProperty("maskObjectIdRef"))
+                    maskIdRef = maskIdRef["maskObjectIdRef"];
+                ///////////////////////////////////////////////////
+                parent = objects[maskIdRef]._getNode();
                 cc.assert(parent, "Error! Mask not found.");
             }
 

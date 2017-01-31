@@ -107,7 +107,6 @@ gaf.Tag.DefineAnimationMasks.doParse = function (s) {
             'elementAtlasIdRef', 'Uint'
         ));
     var result = {'content': exec()};
-    debugger;
     return result;
 };
 
