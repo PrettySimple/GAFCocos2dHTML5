@@ -64,6 +64,12 @@ gaf.Sprite = gaf.Object.extend
         this._super(usedScale);
         cc.assert(gafSpriteProto, "Error! Missing mandatory parameter.");
         this._gafproto = gafSpriteProto;
+
+        ///////////////////////////////////////////////////
+        // HELLO, we need this so that our setOpacity()
+        // calls work like they are intended to, duh!
+        this.setCascadeOpacityEnabled(true);
+        ///////////////////////////////////////////////////
     },
 
     changeSprite: function(frame)
@@ -150,7 +156,6 @@ gaf.Sprite = gaf.Object.extend
             {
                 this._sprite.setOpacity(this._cascadeColorMult.a);
             }
-
         }
     },
 
