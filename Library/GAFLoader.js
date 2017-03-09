@@ -173,7 +173,6 @@ gaf.Loader = function(){
  */
 
 (function(obj) {
-    "use strict";
 
     var ERR_BAD_FORMAT = "File format is not recognized.";
     var ERR_CRC = "CRC failed.";
