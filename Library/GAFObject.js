@@ -426,4 +426,4 @@ gaf.Object._createNullObject = function()
 var _p = gaf.Object.prototype;
 cc.defineGetterSetter(_p, "visible", _p.isVisible, _p.setVisible);
 
-delete _p;
+_p=undefined;
