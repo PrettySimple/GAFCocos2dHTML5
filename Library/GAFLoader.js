@@ -1145,7 +1145,6 @@ gaf.Loader = function(){
  */
 
 (function(global) {
-    "use strict";
 
     // Global
     var MAX_BITS = 15;
