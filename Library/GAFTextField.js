@@ -116,3 +116,4 @@ gaf.TextField = gaf.Object.extend
 
 var _p = gaf.TextField.prototype;
 cc.defineGetterSetter(_p, "text", _p.getText, _p.setText);
+delete _p;
