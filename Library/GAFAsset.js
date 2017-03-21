@@ -453,7 +453,7 @@ gaf.Asset = cc.Class.extend
         extendedPath[extendedPath.length-1] = sourceUrl;
         var alternativeUrl = extendedPath.join('/');
 
-        return [sourceUrl, alternativeUrl];
+        return [/*sourceUrl,*/ alternativeUrl];
     },
 
     _startSound: function(config)
