@@ -163,7 +163,7 @@ gaf._AssetPreload.prototype.Atlases = function(asset, content, timeLine)
         if(!loaded)
         {
             var success = function (atlas) {
-                atlas.handleLoadedTexture(true);
+                atlas.handleLoadedTexture(true, true);
                 asset._onAtlasLoaded(atlasId, atlas);
             };
 
