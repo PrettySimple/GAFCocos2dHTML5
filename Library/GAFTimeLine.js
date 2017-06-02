@@ -555,7 +555,16 @@ gaf.TimeLine = gaf.Object.extend
         {
             return;
         }
-        var currentFrame = frames[frameIndex];
+        ///////////////////////////////////////////////////
+        // FIX 
+        // when we do a goToAnd function, we don't necessarily end up on an existing frame!
+        var currentFrame = null;
+        for (var i in frames)
+            if (i > frameIndex)
+                break;
+            else
+                currentFrame = frames[i];
+        ///////////////////////////////////////////////////
         if(!currentFrame)
         {
             return;
