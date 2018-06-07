@@ -31,7 +31,7 @@ gaf.Loader = function(){
 
     this.LoadFile = function(filePath, onLoaded, asZip){
         var oReq = new XMLHttpRequest();
-        oReq.open("GET", filePath, true);
+        oReq.open("GET", filePath+'?ccjs=3', true);
         var self = this;
         if (asZip) {
             oReq.overrideMimeType('text/plain; charset=x-user-defined');
