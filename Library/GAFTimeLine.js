@@ -42,7 +42,7 @@ gaf.TimeLine = gaf.Object.extend
     },
     getBoundingBoxForCurrentFrame: function ()
     {
-        var result = cc.rect();
+        var result = null; //cc.rect();
         var isFirstObj = true;
         this._objects.forEach(function (item) {
             if(item.isVisible())
@@ -63,6 +63,24 @@ gaf.TimeLine = gaf.Object.extend
                 }
             }
         });
+
+        if(result == null)
+        {
+            //If we reach this point it means that the current frame of this animation
+            //is empty and thus has no bounding box that can be exploited.
+            //We could simply return an empty cc.Rect instance, but that would render the object clickable 
+            //on root (0, 0), and simply ignoring 0 width and 0 height, would mean that a blinking animation
+            //for example would be unclickable when not visible which would in turn become very frustrating.
+            //
+            //To solve this problem we default to the first frame and try to recover the bounding box from
+            //that frame. As a rule of thumb, CC animation must always contain a visible first frame so this
+            //can become the most reliable fallback possible.
+            var frame = this._showingFrame;
+            this.setFrame(1);
+            result = this.getBoundingBoxForCurrentFrame();
+            this.setFrame(frame);
+        }
+
         return cc._rectApplyAffineTransformIn(result, this.getNodeToParentTransform());
     },
     setFps: function (fps)
