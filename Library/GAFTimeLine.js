@@ -42,7 +42,7 @@ gaf.TimeLine = gaf.Object.extend
     },
     getBoundingBoxForCurrentFrame: function ()
     {
-        var result = null;//cc.rect();
+        var result = cc.rect();
         var isFirstObj = true;
         this._objects.forEach(function (item) {
             if(item.isVisible())
