@@ -298,7 +298,7 @@ gaf.Object = cc.Node.extend
     // @Override
     visit: function(parentCmd)
     {
-        // if(this.isVisible())     // Loses optim but fixes some edge cases that would make some GAF animations not work properly!
+        if(this.isVisible())
         {
             this._super(parentCmd);
         }
