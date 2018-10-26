@@ -295,10 +295,21 @@ gaf.Object = cc.Node.extend
             this.setOpacity(0);
     },
 
+    // @Override (bug fix)
+    setOpacity: function (opacity)
+    {
+        // If the node is about to be displayed or undisplayed.. we invalidate the renderer's children order
+        // It will force a visit() on all scenes' nodes. Required to render or unrender the GAF Object
+        // Fixes broken GAF Anims (occurs when we do not visit invisible GAF Objects)
+        if ((this._realOpacity == 0 && opacity > 0) || (this._realOpacity > 0 && opacity == 0))
+            cc.renderer.childrenOrderDirty = true;
+        this._super(opacity);
+    },
+
     // @Override
     visit: function(parentCmd)
     {
-        // if(this.isVisible())     // Loses optim but fixes some edge cases that would make some GAF animations not work properly!
+        if(this.isVisible())
         {
             this._super(parentCmd);
         }
