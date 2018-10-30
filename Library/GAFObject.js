@@ -309,7 +309,7 @@ gaf.Object = cc.Node.extend
     // @Override
     visit: function(parentCmd)
     {
-        // if(this.isVisible())
+        if(this.isVisible())
         {
             this._super(parentCmd);
         }
