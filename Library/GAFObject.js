@@ -302,14 +302,17 @@ gaf.Object = cc.Node.extend
         // It will force a visit() on all scenes' nodes. Required to render or unrender the GAF Object
         // Fixes broken GAF Anims like white eyes (occurs when we do not visit invisible GAF Objects)
         if ((this._realOpacity == 0 && opacity > 0) || (this._realOpacity > 0 && opacity == 0))
+        {
+            this._renderCmd.setDirtyFlag(cc.Node._dirtyFlags.transformDirty);
             cc.renderer.childrenOrderDirty = true;
+        }
         this._super(opacity);
     },
 
     // @Override
     visit: function(parentCmd)
     {
-        // if(this.isVisible())
+        if(this.isVisible())
         {
             this._super(parentCmd);
         }
