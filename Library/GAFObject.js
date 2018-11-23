@@ -304,7 +304,8 @@ gaf.Object = cc.Node.extend
         if ((this._realOpacity == 0 && opacity > 0) || (this._realOpacity > 0 && opacity == 0))
         {
             this._renderCmd.setDirtyFlag(cc.Node._dirtyFlags.transformDirty);
-            cc.renderer.childrenOrderDirty = true;
+            if (cc.renderer)
+                cc.renderer.childrenOrderDirty = true;
         }
         this._super(opacity);
     },
